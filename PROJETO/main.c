@@ -15,7 +15,7 @@ struct aluno {
 
 typedef struct aluno aluno;
 
-int main(int argc, char argv[]) {
+int main(int argc, char *argv[]) {
 
     setlocale(LC_ALL, "Portuguese");
 
@@ -27,21 +27,21 @@ int main(int argc, char argv[]) {
     //int contLinha = 1;
 
     // percorrendo linha da tabela e adicionando dados nas colunas
-    for (lin = 1; lin <= 1; lin++) {
-        for (int col = 1; col <= 4; col++) {
-            if (col == 1) {
+    for (lin = 0; lin < 1; lin++) {
+        for (int col = 0; col < 4; col++) {
+            if (col == 0) {
                 puts("Matricula (chave primária):");
                 scanf("%d", &alunos[lin][col].matricula);
 
-            } else if (col == 2) {
+            } else if (col == 1) {
                 puts("Nome:");
-                scanf("%s", &alunos[lin][col].nome);
+                scanf("%s", alunos[lin][col].nome);
 
-            } else if (col == 3) {
+            } else if (col == 2) {
                 puts("Idade:");
                 scanf("%d", &alunos[lin][col].idade);
 
-            } else if (col == 4) {
+            } else if (col == 3) {
                 puts("Indice Academico:");
                 scanf("%f", &alunos[lin][col].ira);
             } 
@@ -49,24 +49,24 @@ int main(int argc, char argv[]) {
     }
 
     // immprimindo tabela
-    for (lin = 1; lin <= 1; lin++) {
-        printf("------------------Pessoa %d ----------------- \n", lin);
-        
-        for (col = 1; col <= 4; col++) {
-            if (col == 1) {
-                printf("Matricula: %d", alunos[lin][col].matricula);
+    printf("------------------ Alunos   ----------------- \n");
+    printf("Matricula | Nome       | Idade | Ira \n");
+    for (lin = 0; lin < 1; lin++) {
+        for (col = 0; col < 4; col++) {
+            if (col == 0) {
+                printf("%d         | ", alunos[lin][col].matricula);
+            } else if (col == 1) {
+                printf("%s     | ", alunos[lin][col].nome);
+
             } else if (col == 2) {
-                printf("Nome: %s \n", alunos[lin][col].nome);
+                printf("%d    | ", alunos[lin][col].idade);
 
             } else if (col == 3) {
-                printf("Idade: %d \n", alunos[lin][col].idade);
-
-            } else if (col == 4) {
-                printf("Indice academico: %.2f \n", alunos[lin][col].ira);
+                printf("%.2f", alunos[lin][col].ira);
             } 
         }
 
-        printf("--------------------------------------------- \n");
+        printf("\n--------------------------------------------- \n");
     }
 
     return 0;
